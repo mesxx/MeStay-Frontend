@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import PropTypes from "prop-types";
 
 export default function Button(props) {
   const className = [props.className];
   if (props.isPrimary) className.push("btn-primary");
+  if (props.isLight) className.push("btn-light");
   if (props.isLarge) className.push("btn-lg");
   if (props.isSmall) className.push("btn-sm");
   if (props.isBlock) className.push("btn-block");
@@ -20,9 +22,8 @@ export default function Button(props) {
       <span className={className.join(" ")} style={props.style}>
         {props.isLoading ? (
           <>
-            <span className="spinner-border spinner-border-sm mx-5">
-              <span className="sr-only">Loading...</span>
-            </span>
+            <span className="spinner-border spinner-border-sm mx-5"></span>
+            <span className="sr-only">Loading...</span>
           </>
         ) : (
           props.children
@@ -31,20 +32,18 @@ export default function Button(props) {
     );
   }
 
-  if (props.type == "link") {
+  if (props.type === "link") {
     if (props.isExternal) {
       return (
-        <>
-          <a
-            href={props.href}
-            className={className.join(" ")}
-            style={props.style}
-            target={props.target === "_blank" ? "_blank" : undefined}
-            rel={props.target === "_blank" ? "noopener noreferrer" : undefined}
-          >
-            {props.children}
-          </a>
-        </>
+        <a
+          href={props.href}
+          className={className.join(" ")}
+          style={props.style}
+          target={props.target === "_blank" ? "_blank" : undefined}
+          rel={props.target === "_blank" ? "noopener noreferrer" : undefined}
+        >
+          {props.children}
+        </a>
       );
     } else {
       return (
@@ -52,7 +51,7 @@ export default function Button(props) {
           to={props.href}
           className={className.join(" ")}
           style={props.style}
-          onClick={onclick}
+          onClick={onClick}
         >
           {props.children}
         </Link>
@@ -62,9 +61,9 @@ export default function Button(props) {
 
   return (
     <button
-      style={props.style}
-      onClick={onclick}
       className={className.join(" ")}
+      style={props.style}
+      onClick={onClick}
     >
       {props.children}
     </button>
@@ -77,12 +76,13 @@ Button.propTypes = {
   href: PropTypes.string,
   target: PropTypes.string,
   className: PropTypes.string,
+  isPrimary: PropTypes.bool,
+  isLight: PropTypes.bool,
   isExternal: PropTypes.bool,
   isDisabled: PropTypes.bool,
   isLoading: PropTypes.bool,
   isSmall: PropTypes.bool,
   isLarge: PropTypes.bool,
   isBlock: PropTypes.bool,
-  isExternal: PropTypes.bool,
   hasShadow: PropTypes.bool,
 };
