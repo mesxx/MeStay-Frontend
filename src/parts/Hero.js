@@ -2,9 +2,9 @@ import React from "react";
 
 import ImageHero from "assets/images/img-hero.jpg";
 import ImageHero_ from "assets/images/img-hero-frame.jpg";
-import IconCities from "assets/images/icons/ic_cities.svg";
-import IconTraveller from "assets/images/icons/ic_traveler.svg";
-import IconTreasure from "assets/images/icons/ic_treasure.svg";
+import IconCities from "assets/images/icons/ic-cities.svg";
+import IconTraveller from "assets/images/icons/ic-traveler.svg";
+import IconTreasure from "assets/images/icons/ic-treasure.svg";
 
 import Button from "elements/Button";
 import formatNumber from "utils/formatNumber";
