@@ -1,18 +1,27 @@
 import React, { Component } from "react";
 
-import InputNumber from "elements/Form/InputNumber";
+import { InputNumber, InputDate } from "elements/Form";
+import Breadcrumb from "elements/Breadcrumb";
 
 export default class Example extends Component {
-  state = {
-    value: "1",
-  };
+  // state = {
+  //   value: {
+  //     startDate: new Date(),
+  //     endDate: new Date(),
+  //     key: "selection",
+  //   },
+  // };
 
-  handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+  // handleChange = (e) => {
+  //   this.setState({ [e.target.name]: e.target.value });
+  // };
 
   render() {
-    console.log(this.state.value);
+    const breadcrumb = [
+      { pageTitle: "Home", pageHref: "" },
+      { pageTitle: "House Detail", pageHref: "" },
+    ];
+
     return (
       <div className="container">
         <div
@@ -20,14 +29,7 @@ export default class Example extends Component {
           style={{ height: "100vh" }}
         >
           <div className="col">
-            <InputNumber
-              max={30}
-              suffix=" night"
-              isSuffixPlural={1}
-              onChange={this.handleChange}
-              name="value"
-              value={this.state.value}
-            />
+            <Breadcrumb data={breadcrumb} />
           </div>
         </div>
       </div>
