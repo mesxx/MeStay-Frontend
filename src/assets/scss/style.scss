@@ -47,7 +47,7 @@
 @import "offcanvas";
 @import "placeholders";
 
-@import 'container-grid';
+@import "container-grid";
 
 // Helpers
 @import "helpers";
@@ -57,48 +57,48 @@
 // scss-docs-end import-stack
 
 .brand-text-icon {
-    font-size: 26px;
-    font-weight: 500;
-    font-family: 'Poppins', sans-serif;
-    color: $indigo;
-    text-decoration: none;
+  font-size: 26px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  color: $indigo;
+  text-decoration: none;
 }
 
 header {
-    border-bottom: 1px solid $gray-200;
-    width: 100%;
-    position: relative;
-    margin-bottom: 50px;
-    .navbar {
-      height: 80px;
-      ul.navbar-nav {
-        li.nav-item {
-          &.active {
-            a.nav-link {
-              color: $indigo
-            }
+  border-bottom: 1px solid $gray-200;
+  width: 100%;
+  position: relative;
+  margin-bottom: 50px;
+  .navbar {
+    height: 80px;
+    ul.navbar-nav {
+      li.nav-item {
+        &.active {
+          a.nav-link {
+            color: $indigo;
           }
-          a {
-            &.nav-link {
-              letter-spacing: 1px;
-              color: $gray-900;
-              padding-left: 1rem;
-              padding-right: 1rem;
-              &:hover {
-                text-decoration: underline;
-              }
+        }
+        a {
+          &.nav-link {
+            letter-spacing: 1px;
+            color: $gray-900;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            &:hover {
+              text-decoration: underline;
             }
           }
         }
       }
     }
-  } 
+  }
+}
 
-.txt-gray{
+.txt-gray {
   color: $gray-500;
 }
 
-section{
+section {
   margin-bottom: 70px;
 }
 
@@ -141,13 +141,13 @@ section{
     span {
       font-size: 0.875rem;
     }
-    a{
-     color: $gray-800;
-     text-decoration: none;
+    a {
+      color: $gray-800;
+      text-decoration: none;
 
-     &:hover{
-      text-decoration: underline;
-     }
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 
@@ -168,7 +168,7 @@ section{
       z-index: 2;
       @include gradient-y(rgba($black, 0), rgba($black, 0.51), 0%, 100%);
     }
-    
+
     &:hover {
       .meta-wrapper {
         transform: translateY(-10px);
@@ -210,16 +210,16 @@ section{
   }
 }
 
-.img-cover{
+.img-cover {
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   height: 100%;
   width: 100%;
 }
 
-.img-contain{
+.img-contain {
   -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   height: 100%;
   width: 100%;
 }
@@ -247,18 +247,32 @@ footer {
     span {
       color: $gray-500;
       font-weight: 300;
-      text-decoration:none
+      text-decoration: none;
     }
-    a {      
+    a {
       &:hover {
         color: $blue;
-        text-decoration:underline
-      }        
+        text-decoration: underline;
+      }
     }
   }
   .copyrights {
     margin: 50px 0;
     font-weight: 300;
+    color: $gray-500;
+  }
+}
+
+main {
+  p {
+    color: $gray-500;
+    font-weight: 300;
+  }
+}
+
+.text-teal {
+  color: $teal;
+  .text-gray-500 {
     color: $gray-500;
   }
 }

@@ -1,11 +1,8 @@
 import React from "react";
-import Fade from 'react-reveal/Fade';
+import Fade from "react-reveal/Fade";
 
 import ImageHero from "assets/images/img-hero.jpg";
 import ImageHero_ from "assets/images/img-hero-frame.jpg";
-import IconCities from "assets/images/icons/ic-cities.svg";
-import IconTraveller from "assets/images/icons/ic-traveler.svg";
-import IconTreasure from "assets/images/icons/ic-treasure.svg";
 
 import Button from "elements/Button";
 import formatNumber from "utils/formatNumber";
@@ -31,8 +28,8 @@ export default function Hero(props) {
               className="mb-5 fw-light w-75 txt-gray"
               style={{ lineHeight: "170%" }}
             >
-              We provide what you need to enjoy your holiday with family. Time to
-              make another memorable moments.
+              We provide what you need to enjoy your holiday with family. Time
+              to make another memorable moments.
             </p>
             <Button
               className="btn px-5"
@@ -47,7 +44,7 @@ export default function Hero(props) {
                 <img
                   width="36"
                   height="36"
-                  src={IconTraveller}
+                  src="images/ic-traveler.svg"
                   alt={`${formatNumber(props.data.travelers)} Traveller`}
                 />
                 <h6 className="mt-3">
@@ -59,7 +56,7 @@ export default function Hero(props) {
                 <img
                   width="36"
                   height="36"
-                  src={IconTreasure}
+                  src="images/ic-treasure.svg"
                   alt={`${formatNumber(props.data.treasures)} Treasures`}
                 />
                 <h6 className="mt-3">
@@ -71,7 +68,7 @@ export default function Hero(props) {
                 <img
                   width="36"
                   height="36"
-                  src={IconCities}
+                  src="images/ic-cities.svg"
                   alt={`${formatNumber(props.data.cities)} Cities`}
                 />
                 <h6 className="mt-3">
@@ -82,12 +79,12 @@ export default function Hero(props) {
             </div>
           </div>
           <div className="col ps-5">
-            <div style={{ width: 520, height: 410 }} >
+            <div style={{ width: 520, height: 410 }}>
               <img
                 src={ImageHero}
                 alt="Room with couches"
                 className="img-fluid position-absolute"
-                style={{ margin: "-30px 0 0 0", zIndex: 1, width: "inherit"}}
+                style={{ margin: "-30px 0 0 0", zIndex: 1, width: "inherit" }}
               />
               <img
                 src={ImageHero_}

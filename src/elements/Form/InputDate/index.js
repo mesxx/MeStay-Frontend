@@ -1,86 +1,90 @@
-import React, { useState } from "react";
-
+import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 
+import { DateRange } from "react-date-range";
+
 import "./index.scss";
+import "react-date-range/dist/styles.css"; // main css file
+import "react-date-range/dist/theme/default.css"; // theme css file
 
-export default function Number(props) {
-  const { value, placeholder, name, min, max, prefix, suffix } = props;
-  const [InputValue, setInputValue] = useState(`${prefix}${value}${suffix}`);
+import formatDate from "utils/formatDate";
+import iconCalendar from "assets/images/icons/ic-calendar.svg";
 
-  const onChange = (e) => {
-    let value = String(e.taget.value);
-    if (prefix) value = value.replace(prefix);
-    if (suffix) value = value.replace(suffix);
+export default function Date(props) {
+  const { value, placeholder, name } = props;
+  const [isShowed, setIsShowed] = useState(false);
 
-    const patternNumeric = new RegExp("[0-9]*");
-    const isNumeric = patternNumeric.test(value);
+  const datePickerChange = (value) => {
+    const target = {
+      target: {
+        value: value.selection,
+        name: name,
+      },
+    };
+    props.onChange(target);
+  };
 
-    if (isNumeric && +value <= max && +value >= min) {
-      props.onChange({
-        target: {
-          name: name,
-          value: +value,
-        },
-      });
-      setInputValue(`${prefix}${value}${suffix}`);
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  });
+
+  const refDate = useRef(null);
+  const handleClickOutside = (event) => {
+    if (refDate && !refDate.current.contains(event.target)) {
+      setIsShowed(false);
     }
   };
 
-  const minus = () => {
-    value > min &&
-      onChange({
-        target: {
-          name: name,
-          value: +value - 1,
-        },
-      });
+  const check = (focus) => {
+    focus.indexOf(1) < 0 && setIsShowed(false);
   };
 
-  const plus = () => {
-    value < max &&
-      onChange({
-        target: {
-          name: name,
-          value: +value + 1,
-        },
-      });
-  };
+  const displayDate = `${value.startDate ? formatDate(value.startDate) : ""}${
+    value.endDate ? " - " + formatDate(value.endDate) : ""
+  }`;
 
   return (
-    <div className={["input-number mb-3", props.outerClassName].join(" ")}>
+    <div
+      ref={refDate}
+      className={["input-date mb-3", props.outerClassName].join(" ")}
+    >
       <div className="input-group">
-        <span className="input-group-text minus" onClick={minus}>
-          -
-        </span>
+        <div className="input-group-prepend bg-gray-900">
+          <span className="input-group-text">
+            <img src={iconCalendar} alt="icon calendar" />
+          </span>
+        </div>
         <input
+          readOnly
           type="text"
           className="form-control"
-          placeholder={placeholder ? placeholder : "0"}
-          min={min}
-          max={max}
-          name={name}
-          pattern="[0-9]*"
-          value={String(InputValue)}
-          onChange={onChange}
+          value={displayDate}
+          placeholder={placeholder}
+          onClick={() => setIsShowed(!isShowed)}
         />
-        <span className="input-group-text plus" onClick={plus}>
-          +
-        </span>
+
+        {isShowed && (
+          <div className="date-range-wrapper">
+            <DateRange
+              editableDateInputs={true}
+              onChange={datePickerChange}
+              moveRangeOnFirstSelection={false}
+              onRangeFocusChange={check}
+              ranges={[value]}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
 }
 
-Number.defaultProps = {
-  min: 1,
-  max: 1,
-  prefix: "",
-  suffix: "",
-};
-
-Number.propTypes = {
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+Date.propTypes = {
+  value: PropTypes.object,
   onChange: PropTypes.func,
   placeholder: PropTypes.string,
   outerClassName: PropTypes.string,
