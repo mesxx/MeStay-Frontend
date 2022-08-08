@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import { InputNumber, InputDate } from "elements/Form";
 import Breadcrumb from "elements/Breadcrumb";
+import Button from "elements/Button";
 
 export default class Example extends Component {
   // state = {
@@ -30,6 +31,17 @@ export default class Example extends Component {
         >
           <div className="col">
             <Breadcrumb data={breadcrumb} />
+
+            <div class="d-grid gap-2 d-md-block">
+              <Button
+                className="btn"
+                hasShadow
+                isPrimary
+                onClick={this.startBooking}
+              >
+                Continue to Book
+              </Button>
+            </div>
           </div>
         </div>
       </div>

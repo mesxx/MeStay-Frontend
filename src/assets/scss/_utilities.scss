@@ -538,6 +538,9 @@ $utilities: map-merge(
           "muted": $text-muted,
           "black-50": rgba($black, .5), // deprecated
           "white-50": rgba($white, .5), // deprecated
+          "gray-500": $gray-500,
+          "gray-900": $gray-900,
+          "teal-color": $teal,
           "reset": inherit,
         )
       )

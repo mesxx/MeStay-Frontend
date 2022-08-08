@@ -30,7 +30,7 @@ class BookingForm extends Component {
     });
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(_prevProps, prevState) {
     const { data } = this.state;
 
     if (prevState.data.date !== data.date) {
@@ -83,11 +83,9 @@ class BookingForm extends Component {
     return (
       <div className="card bordered" style={{ padding: "60px 80px" }}>
         <h4 className="mb-3">Start Booking</h4>
-        <h5 className="h2 text-teal mb-4">
+        <h5 className="h2 text-teal-color mb-4">
           ${itemDetails.price}{" "}
-          <span className="text-gray-500 font-weight-light">
-            per {itemDetails.unit}
-          </span>
+          <span className="text-gray-500 fw-light">per {itemDetails.unit}</span>
         </h5>
 
         <label htmlFor="duration">How long you will stay?</label>
@@ -103,10 +101,7 @@ class BookingForm extends Component {
         <label htmlFor="date">Pick a date</label>
         <InputDate onChange={this.updateData} name="date" value={data.date} />
 
-        <h6
-          className="text-gray-500 font-weight-light"
-          style={{ marginBottom: 40 }}
-        >
+        <h6 className="text-gray-500 fw-light" style={{ marginBottom: 40 }}>
           You will pay{" "}
           <span className="text-gray-900">
             ${itemDetails.price * data.duration} USD
@@ -117,15 +112,16 @@ class BookingForm extends Component {
           </span>
         </h6>
 
-        <Button
-          className="btn"
-          hasShadow
-          isPrimary
-          isBlock
-          onClick={this.startBooking}
-        >
-          Continue to Book
-        </Button>
+        <div class="d-grid gap-2 d-md-block">
+          <Button
+            className="btn"
+            hasShadow
+            isPrimary
+            onClick={this.startBooking}
+          >
+            Continue to Book
+          </Button>
+        </div>
       </div>
     );
   }

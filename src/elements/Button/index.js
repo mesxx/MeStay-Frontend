@@ -9,8 +9,8 @@ export default function Button(props) {
   if (props.isLight) className.push("btn-light");
   if (props.isLarge) className.push("btn-lg");
   if (props.isSmall) className.push("btn-sm");
-  if (props.isBlock) className.push("btn-block");
-  if (props.hasShadow) className.push("btn-shadow");
+  // if (props.isBlock) className.push("btn-block");
+  if (props.hasShadow) className.push("btn-box-shadow");
 
   const onClick = () => {
     if (props.onClick) props.onClick();
@@ -83,6 +83,6 @@ Button.propTypes = {
   isLoading: PropTypes.bool,
   isSmall: PropTypes.bool,
   isLarge: PropTypes.bool,
-  isBlock: PropTypes.bool,
+  // isBlock: PropTypes.bool,
   hasShadow: PropTypes.bool,
 };
