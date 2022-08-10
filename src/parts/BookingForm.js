@@ -112,16 +112,15 @@ class BookingForm extends Component {
           </span>
         </h6>
 
-        <div class="d-grid gap-2 d-md-block">
-          <Button
-            className="btn"
-            hasShadow
-            isPrimary
-            onClick={this.startBooking}
-          >
-            Continue to Book
-          </Button>
-        </div>
+        <Button
+          className="btn"
+          hasShadow
+          isPrimary
+          onClick={this.startBooking}
+          style={{ display: "block" }}
+        >
+          Continue to Book
+        </Button>
       </div>
     );
   }
