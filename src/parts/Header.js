@@ -18,7 +18,7 @@ export default function Header(props) {
       <Fade left>
         <header className="spacing-sm">
           <div className="container">
-            <nav className="navbar navbar-expand-lg navbar-ligth">
+            <nav className="navbar navbar-expand-lg navbar-light">
               <Button type="link" className="brand-text-icon mx-auto" href="">
                 Me<span className="text-secondary">stay.</span>
               </Button>
