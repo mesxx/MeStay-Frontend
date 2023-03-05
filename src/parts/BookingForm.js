@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import PropTypes from "prop-types";
 
 import Button from "elements/Button";
@@ -73,7 +72,6 @@ class BookingForm extends Component {
         endDate: data.date.endDate,
       },
     });
-    this.props.history.push("/checkout");
   };
 
   render() {
@@ -118,6 +116,8 @@ class BookingForm extends Component {
           isPrimary
           onClick={this.startBooking}
           style={{ display: "block" }}
+          href="/checkout"
+          type="link"
         >
           Continue to Book
         </Button>
